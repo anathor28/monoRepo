@@ -4,6 +4,6 @@ import { Module } from "@nestjs/common";
 @Module({
   imports: [],
   controllers: [],
-  providers: [RabbitMQServicen MqttService],
+  providers: [RabbitMQService, MqttService],
 })
 export class AppModule {}
