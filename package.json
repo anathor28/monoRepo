@@ -1,0 +1,14 @@
+{
+  "name": "banque-app-monorepo",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "prestart:dev": "docker-compose up -d",
+    "start:dev": "pnpm --parallel -r run start:dev",
+    "poststart:dev": "docker-compose down",
+    "start:dev:full": "npm run prestart:dev && npm run start:dev && npm run poststart:dev"
+  },
+  "devDependencies": {
+    "@nestjs/cli": "latest"
+  }
+}
