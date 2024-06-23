@@ -4,13 +4,29 @@
   "private": true,
   "scripts": {
     "prestart:dev": "docker-compose up -d",
-    "start":"pnpm --parallel -r run start:dev",
+    "start": "pnpm --parallel -r run start:dev",
     "start:dev": "pnpm --parallel -r run start:dev",
     "poststart:dev": "docker-compose down",
     "start:dev:full": "npm run prestart:dev && npm run start:dev && npm run poststart:dev",
     "start:web": "pnpm --filter @banque-app/web-client start"
   },
   "devDependencies": {
-    "@nestjs/cli": "latest"
+    "@nestjs/cli": "latest",
+    "@typescript-eslint/eslint-plugin": "^5.59.0",
+    "@typescript-eslint/parser": "^5.59.0",
+    "eslint": "^8.0.0",
+    "eslint-config-react-app": "^7.0.1",
+    "eslint-plugin-react": "^7.32.2",
+    "sass": "^1.77.6"
+  },
+  "resolutions": {
+    "eslint": "^8.0.0",
+    "eslint-plugin-react": "^7.32.2"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.11.4",
+    "@emotion/styled": "^11.11.5",
+    "@mui/icons-material": "^5.15.20",
+    "@mui/material": "^5.15.20"
   }
 }

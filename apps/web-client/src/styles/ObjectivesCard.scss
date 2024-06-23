@@ -1,0 +1,39 @@
+// src/components/ObjectivesCard.scss
+@import './index.scss';
+
+.objectives-card {
+  @include card;
+
+  h2 {
+    margin-bottom: 15px;
+  }
+
+  ul {
+    list-style-type: none;
+    padding: 0;
+
+    li {
+      margin-bottom: 15px;
+
+      .objective-info {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 5px;
+      }
+
+      .progress-bar {
+        background-color: #e0e0e0;
+        border-radius: 10px;
+        height: 10px;
+        overflow: hidden;
+
+        .progress {
+          height: 100%;
+          background-color: $primary-color;
+          border-radius: 10px;
+          transition: width 0.3s ease-in-out;
+        }
+      }
+    }
+  }
+}

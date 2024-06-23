@@ -1,0 +1,17 @@
+// src/components/BalanceCard.scss
+@import './index.scss';
+
+.balance-card {
+  @include card;
+
+  h2 {
+    color: $text-color;
+    margin-bottom: 10px;
+  }
+
+  .balance {
+    font-size: 2em;
+    font-weight: bold;
+    color: $primary-color;
+  }
+}

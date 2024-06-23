@@ -1,0 +1,50 @@
+// src/components/BudgetOverviewCard.scss
+@import './index.scss';
+
+.budget-overview-card {
+  @include card;
+
+  h2 {
+    margin-bottom: 15px;
+  }
+
+  ul {
+    list-style-type: none;
+    padding: 0;
+
+    li {
+      margin-bottom: 15px;
+
+      .category-info {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 5px;
+      }
+
+      .progress-bar {
+        background-color: #e0e0e0;
+        border-radius: 10px;
+        height: 10px;
+        overflow: hidden;
+
+        .progress {
+          height: 100%;
+          border-radius: 10px;
+          transition: width 0.3s ease-in-out;
+
+          &[data-percentage^="7"], &[data-percentage^="8"], &[data-percentage^="9"] {
+            background-color: $warning-color;
+          }
+
+          &[data-percentage^="100"], &[data-percentage="10"] {
+            background-color: $danger-color;
+          }
+
+          &[data-percentage] {
+            background-color: $secondary-color;
+          }
+        }
+      }
+    }
+  }
+}

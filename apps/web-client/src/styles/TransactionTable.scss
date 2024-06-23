@@ -1,0 +1,23 @@
+// components/TransactionTable.scss
+.transaction-table-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.transaction-table {
+  height: 600px; // Adjust as needed
+  overflow-y: auto;
+  scrollbar-width: none; // For Firefox
+  -ms-overflow-style: none; // For Internet Explorer and Edge
+
+  &::-webkit-scrollbar {
+    display: none; // For Chrome, Safari, and Opera
+  }
+}
+
+.loading {
+  text-align: center;
+  padding: 10px;
+  font-style: italic;
+  color: #666;
+}

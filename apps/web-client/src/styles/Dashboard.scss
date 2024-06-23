@@ -1,0 +1,15 @@
+// src/components/Dashboard.scss
+@import '../index.scss';
+
+.dashboard {
+  h1 {
+    font-size: 2em;
+    margin-bottom: 20px;
+  }
+
+  .dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+  }
+}
