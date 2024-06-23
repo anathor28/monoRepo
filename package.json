@@ -7,7 +7,8 @@
     "start":"pnpm --parallel -r run start:dev",
     "start:dev": "pnpm --parallel -r run start:dev",
     "poststart:dev": "docker-compose down",
-    "start:dev:full": "npm run prestart:dev && npm run start:dev && npm run poststart:dev"
+    "start:dev:full": "npm run prestart:dev && npm run start:dev && npm run poststart:dev",
+    "start:web": "pnpm --filter @banque-app/web-client start"
   },
   "devDependencies": {
     "@nestjs/cli": "latest"

@@ -1,0 +1,105 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  // url      = env("DATABASE_URL")
+  url      = "postgresql://postgres:admin@192.168.1.10:5432/postgres?schema=Bankeasy"
+}
+
+model User {
+  id               String     @id @default(uuid()) // UUID v4
+  accounts         Account[]
+  budgets          Budget[]
+  recurringEntries RecurringEntry[]
+  objectives       Objective[]
+}
+
+model Account {
+  id            Int           @id @default(autoincrement())
+  userId        String
+  user          User          @relation(fields: [userId], references: [id])
+  name          String
+  balance       Float
+  transactions  Transaction[]
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
+}
+
+model Transaction {
+  id        Int      @id @default(autoincrement())
+  accountId Int
+  account   Account  @relation(fields: [accountId], references: [id])
+  amount    Float
+  type      TransactionType
+  category  String?
+  date      DateTime @default(now())
+  note      String?
+}
+
+model RecurringEntry {
+  id          Int       @id @default(autoincrement())
+  userId      String
+  user        User      @relation(fields: [userId], references: [id])
+  name        String
+  amount      Float
+  type        RecurringEntryType
+  frequency   Frequency
+  startDate   DateTime
+  endDate     DateTime?
+  isActive    Boolean   @default(true)
+}
+
+model Budget {
+  id        Int      @id @default(autoincrement())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
+  name      String
+  amount    Float
+  startDate DateTime
+  endDate   DateTime
+  categories BudgetCategory[]
+}
+
+model BudgetCategory {
+  id       Int    @id @default(autoincrement())
+  budgetId Int
+  budget   Budget @relation(fields: [budgetId], references: [id])
+  name     String
+  amount   Float
+}
+
+model Objective {
+  id          Int      @id @default(autoincrement())
+  userId      String
+  user        User     @relation(fields: [userId], references: [id])
+  name        String
+  targetAmount Float
+  currentAmount Float
+  deadline    DateTime?
+  isCompleted Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+enum TransactionType {
+  INCOME
+  EXPENSE
+}
+
+enum RecurringEntryType {
+  INCOME
+  EXPENSE
+}
+
+enum Frequency {
+  DAILY
+  WEEKLY
+  MONTHLY
+  YEARLY
+}
